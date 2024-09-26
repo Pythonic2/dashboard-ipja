@@ -4,8 +4,9 @@ FROM python:3.9
 # Definir o diretório de trabalho no contêiner
 WORKDIR /app
 
-# Copiar os arquivos do projeto para o contêiner
-COPY . /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
 
 # Instalar o Streamlit e outras dependências do projeto
 RUN pip install streamlit
