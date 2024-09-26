@@ -1,7 +1,17 @@
-version: '3'
+version: '3.8'
 
 services:
   streamlit:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+    pull_policy: build
+    restart: always
     ports:
       - "8501:8501"
+    networks:
+      - pi_default
+
+networks:
+  pi_default:
+    external: true
